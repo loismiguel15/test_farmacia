@@ -1,97 +1,60 @@
-📄 1. PDF Documentado (relatorio-final.pdf)
-TÍTULO: Sistema de Controle de Medicamentos – Projeto Final
+📄 Relatório Final
+📝 Descrição da Aplicação
+A aplicação desenvolvida simula o sistema de controle de medicamentos de uma farmácia. As principais funcionalidades incluem:
 
-a) Descrição da Aplicação
-Explique:
+Cadastro de medicamentos com campos: ID, nome, quantidade e preço.
 
-A aplicação simula uma farmácia.
+Venda de medicamentos, controlando a quantidade disponível.
 
-Permite cadastro de medicamentos, realização de vendas, visualização do estoque e do histórico de vendas.
+Exibição do estoque atualizado.
 
-Desenvolvido com HTML, CSS e JavaScript.
+Visualização do histórico de vendas.
 
-Dados armazenados temporariamente (não usa banco de dados).
+Alertas automáticos para confirmação de cadastro e venda.
 
-Exemplo:
+A interface foi construída com HTML, CSS e JavaScript puro. O foco do sistema é ser funcional e de fácil uso para o operador da farmácia.
 
-A aplicação desenvolvida tem como objetivo simular um sistema de controle de medicamentos de uma farmácia. Ela permite cadastrar medicamentos com ID, nome, quantidade e preço. Também é possível realizar vendas, visualizar o estoque e o histórico de vendas. A aplicação é inteiramente executada no navegador e foi testada com automação usando Selenium WebDriver.
+🧠 Tabelas de Decisão e Justificativas
+Tabela 1 – Cadastro de Medicamentos
+Condição	Ação esperada
+Todos os campos preenchidos	Cadastrar medicamento e exibir alerta
+Campo vazio	Não cadastrar e exibir alerta de erro
+Medicamento com ID já existente	Atualizar dados do medicamento
 
-b) Tabelas de Decisão e Justificativas
-Monte 2 a 3 tabelas de decisão, por exemplo:
+Justificativa: Garante que o cadastro não seja duplicado e os dados estejam completos.
 
-Tabela de Decisão – Cadastro de Medicamento
-ID	Nome	Quantidade	Preço	Esperado
-1	dipirona	1	3	Cadastro realizado com sucesso
-2	(vazio)	1	3	Alerta: Nome é obrigatório
-3	ibuprofeno	-5	3	Alerta: Quantidade inválida
+Tabela 2 – Venda de Medicamentos
+Condição	Ação esperada
+ID válido e quantidade disponível	Realizar venda e atualizar estoque
+ID inválido	Exibir alerta de erro
+Quantidade maior que o estoque	Bloquear venda e exibir alerta de erro
 
-Justificativa:
-Essas decisões cobrem cenários positivos e negativos no cadastro. O sistema deve validar obrigatoriedade e limites.
+Justificativa: Garante consistência no estoque e integridade da operação de venda.
 
-c) Relatório de Testes (com prints ou logs)
-Inclua:
+✅ Relatório de Testes Automatizados
+Ferramenta utilizada: Selenium WebDriver + Pytest
+Navegador: Firefox
+Testes realizados:
+Cadastro de Medicamento
 
-Nome do teste: test_cadastro_e_venda
+Dados usados: ID = 1, Nome = dipirona, Quantidade = 1, Preço = 3
 
-Ferramenta usada: Selenium + Firefox
+Resultado esperado: Alerta de sucesso
 
-Resultado: ✅ Teste passou
+Resultado obtido: ✅ Alerta "Medicamento dipirona cadastrado com sucesso!"
 
-Prints de tela do navegador (pode tirar com print() ou usar ferramenta de captura)
+Venda de Medicamento
 
-Exemplo de estrutura:
+Dados usados: ID = 1, Quantidade = 1
 
-makefile
-Copiar
-Editar
-Teste: Cadastro e Venda de Medicamento
-Resultado: SUCESSO ✅
-Ferramenta: Selenium WebDriver
-Descrição: O teste automatizado preenche o formulário de cadastro, valida o alerta de sucesso, realiza uma venda, e valida novamente o alerta.
-📸 Insira prints assim:
+Resultado esperado: Alerta de venda
 
-csharp
-Copiar
-Editar
-[Imagem] Cadastro realizado com sucesso
-[Imagem] Alerta de venda realizada
-[Imagem] Estoque após venda
-Se possível, adicione logs da execução no terminal.
+Resultado obtido: ✅ Alerta "Venda de 1 unidades de dipirona realizada com sucesso!"
 
-🖼️ 2. Slides da Apresentação (PDF ou PowerPoint)
-Sugestão de Estrutura dos Slides:
-Capa: Nome do projeto, grupo, data
+Visualização de Estoque
 
-Objetivo da Aplicação
+Verificação do estoque restante após a venda
 
-Funcionalidades (cadastro, venda, estoque, histórico)
+Visualização de Vendas
 
-Decisões de Teste (com 1 tabela resumida)
-
-Teste Automatizado (passos + print)
-
-Execução ao vivo: (instruções curtas do que será feito)
-
-Conclusão: o que aprendemos, dificuldades superadas
-
-Integrantes do Grupo
-
-🧪 3. Apresentação em Sala (Quarta-feira, 09/06)
-Duração: 10 minutos
-
-Como apresentar:
-👩‍💻 Demonstre a aplicação rodando no navegador (faz um cadastro e venda manualmente).
-
-⚙️ Explique as escolhas de testes com base nas tabelas (ex: testamos erros de entrada e fluxos principais).
-
-🧪 Execute ao vivo o teste com Selenium:
-
-Abra terminal
-
-Execute com:
-
-bash
-Copiar
-Editar
-pytest tests/test_farmacia_selenium.py
-Mostre os alertas aparecendo no navegador.
+Verificação se a venda aparece no histórico
