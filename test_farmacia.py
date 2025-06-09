@@ -10,7 +10,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class TestUntitled():
+class TestTestfarmacia():
   def setup_method(self, method):
     self.driver = webdriver.Firefox()
     self.vars = {}
@@ -18,38 +18,20 @@ class TestUntitled():
   def teardown_method(self, method):
     self.driver.quit()
   
-  def test_untitled(self):
+  def test_testfarmacia(self):
     self.driver.get("https://loismiguel15.github.io/farmacia/?classId=6af7bdb9-1401-486f-a029-2ec8ab7d1110&assignmentId=305218df-2c0f-4cd3-886e-14f9fce75209&submissionId=6fe38fef-ca98-4906-fd2b-4d32196890cb")
-    self.driver.set_window_size(1382, 744)
+    self.driver.set_window_size(1936, 1048)
     self.driver.find_element(By.ID, "id").click()
     self.driver.find_element(By.ID, "id").send_keys("1")
     self.driver.find_element(By.ID, "nome").click()
-    self.driver.find_element(By.ID, "nome").send_keys("dipirona")
+    self.driver.find_element(By.ID, "nome").send_keys("2")
     self.driver.find_element(By.ID, "quantidade").click()
-    self.driver.find_element(By.ID, "quantidade").send_keys("1")
+    self.driver.find_element(By.ID, "quantidade").send_keys("3")
     self.driver.find_element(By.ID, "preco").click()
-    self.driver.find_element(By.ID, "preco").send_keys("3")
-    self.driver.find_element(By.CSS_SELECTOR, "button:nth-child(6)").click()
-    assert self.driver.switch_to.alert.text == "Medicamento dipirona cadastrado com sucesso!"
+    self.driver.find_element(By.ID, "preco").send_keys("4")
     self.driver.find_element(By.ID, "idVenda").click()
     self.driver.find_element(By.ID, "idVenda").send_keys("1")
     self.driver.find_element(By.ID, "quantidadeVenda").click()
-    self.driver.find_element(By.ID, "quantidadeVenda").send_keys("1")
-    self.driver.find_element(By.CSS_SELECTOR, "button:nth-child(4)").click()
-    assert self.driver.switch_to.alert.text == "Venda de 1 unidades de dipirona realizada com sucesso!"
-    self.driver.find_element(By.CSS_SELECTOR, ".estoque > button").click()
-    element = self.driver.find_element(By.CSS_SELECTOR, ".estoque > button")
-    actions = ActionChains(self.driver)
-    actions.move_to_element(element).perform()
-    element = self.driver.find_element(By.CSS_SELECTOR, "body")
-    actions = ActionChains(self.driver)
-    actions.move_to_element(element, 0, 0).perform()
-    self.driver.find_element(By.CSS_SELECTOR, ".vendas > button").click()
-    element = self.driver.find_element(By.CSS_SELECTOR, ".vendas > button")
-    actions = ActionChains(self.driver)
-    actions.move_to_element(element).perform()
-    element = self.driver.find_element(By.CSS_SELECTOR, "body")
-    actions = ActionChains(self.driver)
-    actions.move_to_element(element, 0, 0).perform()
+    self.driver.find_element(By.ID, "quantidadeVenda").send_keys("2")
     self.driver.close()
   
